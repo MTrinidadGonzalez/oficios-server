@@ -1,0 +1,12 @@
+<div>
+    {{username}}, hemos recibido tu orden de compra con los siguientes datos:
+    <p>Productos:</p>
+    {{#each listFinalDeProducts}}
+    <p>Descripción: {{this.description}} </p>
+    <p>Color: {{this.color}} </p>
+    <p>Talle: {{this.talle}} </p>
+    <p>Precio: {{this.price}}</p>
+    <p>Unidades: {{this.quantity}} </p>
+    {{/each}}
+    <p>Precio total de compra:$ {{totalAmount}}</p>
+</div>
