@@ -177,6 +177,7 @@ const deleteInactiveUser= async(req,res)=>{
   };
 
   const postImgProfile = async (req, res) => {
+  //  const urlDeploy= 'https://oficios-server.onrender.com/api/documents'
     try{const uid= req.user.id
        const filename= req.file.filename
        const imgProfile= `${urlDocs}/${req.file.filename}?folder=profile`
