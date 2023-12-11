@@ -18,9 +18,9 @@ const port= config.app.PORT
 
 app.use(cors(
     {
-        origin: true,
+        origin: 'https://oficio-client.onrender.com',
         credentials: true,
-        methods: ['GET', 'POST','PUT','DELETE']
+      //  methods: ['GET', 'POST','PUT','DELETE']
     }
 ))
 
@@ -34,7 +34,7 @@ app.use(express.static(`${__dirname}/public`))
 const server= app.listen(port, ()=> console.log(`listening on ${port} - ${config.mode.mode}`))
 const io  = new Server(server,{
     cors:{
-        origin: 'https://oficio-client.onrender.com/',
+        origin: 'https://oficio-client.onrender.com',
         methods: ["GET", "POST","PUT","DELETE"]
     }
 })
