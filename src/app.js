@@ -23,15 +23,18 @@ app.use(cors(
         methods: ['GET', 'POST','PUT','DELETE']
     }
 ))*/
+app.use(cookieParser())
 app.use(cors({
     origin: 'https://oficio-client.onrender.com',
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    //esto agregue ahora
+    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept']
 }));
 
 
 const connection= mongoose.connect(config.mongo.URL)
-app.use(cookieParser())
+
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static(`${__dirname}/public`))
