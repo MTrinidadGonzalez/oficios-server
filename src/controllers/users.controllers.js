@@ -187,7 +187,7 @@ const deleteInactiveUser= async(req,res)=>{
       /* const users= await userServices.getUsers()
         req.io.emit('getAllUsers',users)*/
         const user = await userServices.getUserById(uid)
-        req.io.emit('getRealTimeUserProfile',user)
+      req.io.emit('getRealTimeUserProfile',user)
        res.send({ status: 'success' })
     }
     catch(error){
