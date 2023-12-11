@@ -177,11 +177,11 @@ const deleteInactiveUser= async(req,res)=>{
   };
 
   const postImgProfile = async (req, res) => {
-    const urlDeploy= 'https://oficios-server.onrender.com'
+ //   const urlDeploy= 'https://oficios-server.onrender.com'
     try{const uid= req.user.id
        const filename= req.file.filename
     
-       const imgProfile=`${urlDeploy}/api/documents/${req.file.filename}?folder=profile`
+       const imgProfile=`https://oficios-server.onrender.com/api/documents/${req.file.filename}?folder=profile`
        const response= await userServices.updateUserBy('email',req.user.email,{'imgProfile':imgProfile})
       /* const users= await userServices.getUsers()
         req.io.emit('getAllUsers',users)*/
