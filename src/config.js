@@ -31,7 +31,7 @@ export default {
         adminPassword: process.env.ADMIN_PASSWORD
     },
     multerDocsUrl:{
-        multerDocsUrl:process.env.URL_SAVE_MULTER_FILES 
+        multerDocsUrl:process.env.URL_SAVE_MULTER_FILES
     }
 
     }

@@ -7,7 +7,6 @@ import { Server } from 'socket.io'
 import __dirname from './utils.js'
 import config from  './config.js'
 import passportStrategies from './config/passport.config.js'
-import path from 'path'
 
 import UserRouter from './routers/user.router.js'
 import ChatsRoute from './routers/chats.routers.js'
@@ -15,41 +14,27 @@ import  DocumentsRouter from './routers/documents.router.js'
 
 const app= express()
 const port= config.app.PORT 
+//console.log('port', port)
 
-app.use(cookieParser())
-/*
 app.use(cors(
     {
         origin: true,
         credentials: true,
         methods: ['GET', 'POST','PUT','DELETE']
     }
-))*/
-app.use(cors({
-    origin: true,
-   //origin: 'https://oficio-client.onrender.com',
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
-}));
-//agrego esto
-app.use((req, res, next) => {
-    res.setHeader('Content-Security-Policy', 'default-src https://oficio-client.onrender.com');
-    next();
-});
-
-
+))
 
 const connection= mongoose.connect(config.mongo.URL)
-
+app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-//app.use(express.static(`${__dirname}/public`))
-app.use('/static', express.static(path.join(__dirname, 'public/files')));
+app.use(express.static(`${__dirname}/public`))
+
 
 const server= app.listen(port, ()=> console.log(`listening on ${port} - ${config.mode.mode}`))
 const io  = new Server(server,{
     cors:{
-        origin: 'https://oficio-client.onrender.com',
+        origin: 'https://oficio-client.onrender.com/',
         methods: ["GET", "POST","PUT","DELETE"]
     }
 })

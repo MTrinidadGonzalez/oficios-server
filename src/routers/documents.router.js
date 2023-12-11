@@ -8,7 +8,6 @@ export default class DocumentsRouter extends RouterPadre{
 
         this.get('/:filename',["PUBLIC"],async (req,res)=>{
            try{
-            console.log('__dirname en documente.router:', __dirname);
             //urlCompleta: http://localhost:8081/api/documents/1694297444243-59799a2e8ccd217019f2cc9d87f42af7.jpg?folder=products
            
              const {filename}= req.params
