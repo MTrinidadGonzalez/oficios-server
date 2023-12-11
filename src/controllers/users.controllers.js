@@ -182,6 +182,7 @@ const deleteInactiveUser= async(req,res)=>{
        const filename= req.file.filename
     
        const imgProfile=`https://oficios-server.onrender.com/api/documents/${req.file.filename}?folder=profile`
+     console.log('controller user, post img profile', postImgProfile)
        const response= await userServices.updateUserBy('email',req.user.email,{'imgProfile':imgProfile})
       /* const users= await userServices.getUsers()
         req.io.emit('getAllUsers',users)*/
