@@ -23,6 +23,14 @@ app.use(cors(
       //  methods: ['GET', 'POST','PUT','DELETE']
     }
 ))
+//lo que agrego:
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*'); // O especifica el dominio de tu cliente
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 
 const connection= mongoose.connect(config.mongo.URL)
 app.use(cookieParser())

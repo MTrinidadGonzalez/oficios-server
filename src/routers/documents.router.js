@@ -1,4 +1,4 @@
-import RouterPadre from '../routers/router.js'
+/*import RouterPadre from '../routers/router.js'
 import path from 'path'
 import __dirname from '../utils.js'
 import fs from 'fs'
@@ -26,9 +26,9 @@ export default class DocumentsRouter extends RouterPadre {
         });
     } // cierre del init
 }
+*/
 
-
-/*import RouterPadre from '../routers/router.js'
+import RouterPadre from '../routers/router.js'
 import path from 'path'
 import __dirname from '../utils.js'
 import fs from 'fs'
@@ -58,4 +58,4 @@ export default class DocumentsRouter extends RouterPadre{
 
 
     }//cierre del init
-}*/
+}
