@@ -23,14 +23,25 @@ app.use(cors(
         methods: ['GET', 'POST','PUT','DELETE']
     }
 ))*/
+app.use(cors({
+    origin: 'https://oficio-client.onrender.com',
+    credentials: true,
+}));
+//esto agrego recien :
+app.use((req, res, next) => {
+    res.header('Content-Security-Policy', 'img-src https://oficio-client.onrender.com');
+    next();
+});
+
 app.use(cookieParser())
+/*
 app.use(cors({
     origin: 'https://oficio-client.onrender.com',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     //esto agregue ahora
     allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept']
-}));
+}));*/
 
 
 const connection= mongoose.connect(config.mongo.URL)
