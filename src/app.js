@@ -57,6 +57,15 @@ app.set('view engine','handlebars')
 
 passportStrategies()
 
+//agrego esto 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://oficio-client.onrender.com');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    next();
+});
+
 /*rutas*/
 const userRouter = new UserRouter()
 app.use('/api/users', userRouter.getRouter())
