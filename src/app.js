@@ -20,24 +20,17 @@ app.use(cors(
     {
         origin: 'https://oficio-client.onrender.com',
         credentials: true,
-      //  methods: ['GET', 'POST','PUT','DELETE']
+        methods: ['GET', 'POST','PUT','DELETE']
     }
 ))
-//lo que agrego:
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*'); // O especifica el dominio de tu cliente
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-});
+
 
 const connection= mongoose.connect(config.mongo.URL)
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-//app.use(express.static(`${__dirname}/public`))
-app.use(express.static(`/opt/render/project/src/src/public`));
+app.use(express.static(`${__dirname}/public`))
+//app.use(express.static(`/opt/render/project/src/src/public`));
 
 const server= app.listen(port, ()=> console.log(`listening on ${port} - ${config.mode.mode}`))
 const io  = new Server(server,{
