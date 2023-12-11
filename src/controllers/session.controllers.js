@@ -57,7 +57,8 @@ const loginUser=async (req,res)=>{
           res.cookie('authToken',accessToken, {
               maxAge:1000*60*60*24,
              // httpOnly:true,
-              sameSite:"none"
+              sameSite:"none",
+              secure: true,
           }).send({status:'success', userrole:role})
       }
       }
