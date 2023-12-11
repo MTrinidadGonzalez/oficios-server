@@ -72,7 +72,7 @@ const loginUser=async (req,res)=>{
         res.cookie('authToken',accessToken, {
         maxAge:1000*60*60*24,
        httpOnly:true,
-        sameSite:"None"
+        sameSite:"none"
         })
         res.redirect('/home')
     }
