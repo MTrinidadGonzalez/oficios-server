@@ -7,6 +7,7 @@ import { Server } from 'socket.io'
 import __dirname from './utils.js'
 import config from  './config.js'
 import passportStrategies from './config/passport.config.js'
+import path from 'path'
 
 import UserRouter from './routers/user.router.js'
 import ChatsRoute from './routers/chats.routers.js'
@@ -42,8 +43,8 @@ const connection= mongoose.connect(config.mongo.URL)
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use(express.static(`${__dirname}/public`))
-
+//app.use(express.static(`${__dirname}/public`))
+app.use('/static', express.static(path.join(__dirname, 'public/files')));
 
 const server= app.listen(port, ()=> console.log(`listening on ${port} - ${config.mode.mode}`))
 const io  = new Server(server,{
