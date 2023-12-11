@@ -4,19 +4,9 @@ import path from 'path'
 
 
 function createUploader(destinationFolder) {
-    //cambio esto
-   /* const storage = multer.diskStorage({
-        destination: function (req, file, callback) {
-            const destinationPath = path.join(`${__dirname}/public/files/${destinationFolder}`)
-            callback(null, destinationPath);
-        },
-        filename: function (req, file, callback) {
-            callback(null, `${Date.now()}-${file.originalname}`)
-        }
-    });*/
     const storage = multer.diskStorage({
         destination: function (req, file, callback) {
-            const destinationPath = path.join(__dirname, 'public', 'files', destinationFolder);
+            const destinationPath = path.join(`${__dirname}/public/files/${destinationFolder}`)
             callback(null, destinationPath);
         },
         filename: function (req, file, callback) {
