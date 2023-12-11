@@ -15,6 +15,7 @@ import  DocumentsRouter from './routers/documents.router.js'
 const app= express()
 const port= config.app.PORT 
 
+app.use(cookieParser())
 /*
 app.use(cors(
     {
@@ -24,13 +25,17 @@ app.use(cors(
     }
 ))*/
 app.use(cors({
-    origin:true,
     origin: 'https://oficio-client.onrender.com',
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
+//agrego esto
+app.use((req, res, next) => {
+    res.setHeader('Content-Security-Policy', 'default-src https://oficio-client.onrender.com');
+    next();
+});
 
 
-app.use(cookieParser())
 
 const connection= mongoose.connect(config.mongo.URL)
 

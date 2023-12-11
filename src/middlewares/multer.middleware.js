@@ -1,5 +1,7 @@
 import createUploader from '../repository/multerServices/uploader.js'
 
+export const imgProfileUploader = createUploader('profile').single('imgProfile')
+
 export const productsUploader = createUploader('products').single('img');
 
 
@@ -10,4 +12,3 @@ export const documentsUploader = createUploader('documents').fields([
   ]);
 
 
-export const imgProfileUploader = createUploader('profile').single('imgProfile')
