@@ -54,11 +54,17 @@ const loginUser=async (req,res)=>{
           const user= await userServices.updateUserLastConection(uid,connectionDate)
           const exp= await userServices.updateUserExpiration(uid,expirationDate)
   
-          res.cookie('authToken',accessToken, {
+      /*    res.cookie('authToken',accessToken, {
               maxAge:1000*60*60*24,
               httpOnly:true,
               sameSite:"none"
-          }).send({status:'success', userrole:role})
+          }).send({status:'success', userrole:role})*/
+          res.cookie('authToken', accessToken, {
+            maxAge: 1000 * 60 * 60 * 24,
+            httpOnly: true,
+            sameSite: 'None',
+            secure: process.env.NODE_ENV === 'production', 
+          }).send({ status: 'success', userrole: role });
       }
       }
     catch(error){
