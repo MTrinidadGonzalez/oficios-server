@@ -1,7 +1,7 @@
 import multer from 'multer'
 import __dirname from '../../utils.js'
 import path from 'path'
-
+import fs from 'fs';
 /*
 function createUploader(destinationFolder) {
     const storage = multer.diskStorage({
