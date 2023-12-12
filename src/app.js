@@ -10,7 +10,9 @@ import passportStrategies from './config/passport.config.js'
 
 import UserRouter from './routers/user.router.js'
 import ChatsRoute from './routers/chats.routers.js'
-import  DocumentsRouter from './routers/documents.router.js'
+//import  DocumentsRouter from './routers/documents.router.js'
+import documentsRouter from '../src/routers/documents.router.js'
+
 
 const app= express()
 const port= config.app.PORT 
@@ -71,5 +73,6 @@ const userRouter = new UserRouter()
 app.use('/api/users', userRouter.getRouter())
 const chatRouter = new ChatsRoute()
 app.use('/api/chats', chatRouter.getRouter())
-const  documentsRouter= new  DocumentsRouter()
-app.use('/api/documents', documentsRouter.getRouter())
+//const  documentsRouter= new  DocumentsRouter()
+//app.use('/api/documents', documentsRouter.getRouter())
+app.use('/api/documents', documentsRouter);
