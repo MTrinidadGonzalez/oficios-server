@@ -16,8 +16,9 @@ import documentsRouter from '../src/routers/documents.router.js'
 
 const app= express()
 const port= config.app.PORT 
-//console.log('port', port)
 
+app.use(cors())
+/*
 app.use(cors(
     {
        // origin: true,
@@ -25,7 +26,7 @@ app.use(cors(
         credentials: true,
         methods: ['GET', 'POST','PUT','DELETE']
     }
-))
+))*/
 
 
 const connection= mongoose.connect(config.mongo.URL)
