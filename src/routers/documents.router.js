@@ -16,8 +16,10 @@ router.get('/:filename', async (req, res)=> {
         const exist = fs.existsSync(pathIMG);
         
         if (exist) {
+            console.log('existe el archivo y fue encontrado')
             res.sendFile(pathIMG);
         } else {
+            console.log('no existe el archivo y no fue encontrado')
             res.send({ status: 'error', error: 'Documento no encontrado en el servidor' });
         }
     } catch (error) {
