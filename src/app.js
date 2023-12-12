@@ -18,8 +18,8 @@ const port= config.app.PORT
 
 app.use(cors(
     {
-        origin: true,
-        // origin: 'https://oficio-client.onrender.com',
+       // origin: true,
+        origin: 'https://oficio-client.onrender.com',
         credentials: true,
         methods: ['GET', 'POST','PUT','DELETE']
     }
@@ -30,8 +30,8 @@ const connection= mongoose.connect(config.mongo.URL)
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-//app.use(express.static(`${__dirname}/public`))
-app.use(express.static(`/opt/render/project/src/src/public`));
+app.use(express.static(`${__dirname}/public`))
+//app.use(express.static(`/opt/render/project/src/src/public`));
 
 const server= app.listen(port, ()=> console.log(`listening on ${port} - ${config.mode.mode}`))
 const io  = new Server(server,{
