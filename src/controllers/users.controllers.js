@@ -62,7 +62,7 @@ const getAuthToken = async(req,res)=>{
        else{
         const uid= req.user.id
         const user = await userServices.getUserById(uid)
-        req.io.emit('getRealTimeUserProfile',user)
+       // req.io.emit('getRealTimeUserProfile',user)
         res.send({status:'success', payload: user})
     
        }
